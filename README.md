@@ -9,6 +9,7 @@ This repository contains my daily coding practice for JavaScript, React, NodeJs,
 - Pass by value vs reference
 - var / let / const
 - Closures
+- Hoisting
 
 ### Data Structures & Algorithms
 
