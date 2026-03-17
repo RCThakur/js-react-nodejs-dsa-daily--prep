@@ -7,3 +7,8 @@ This repository contains my daily coding practice for JavaScript, React, NodeJs,
 ### JavaScript
 
 - Pass by value vs reference
+
+### Data Structures & Algorithms
+
+- Problem 1 - Reverse String Using Two Pointer Approach
+- Problem 2 - Two Sum Asing hasMap Approach
