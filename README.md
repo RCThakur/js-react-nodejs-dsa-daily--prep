@@ -10,6 +10,19 @@ This repository contains my daily coding practice for JavaScript, React, NodeJs,
 - var / let / const
 - Closures
 - Hoisting
+- Synchronous
+- Asynchronous
+- callback
+
+---
+
+### React
+
+- Virtual DOM
+- useState
+- Controlled vs Uncontrolled Components
+
+---
 
 ### Data Structures & Algorithms
 
