@@ -17,6 +17,11 @@ function App() {
     setInputValue("");
   };
 
+  const handleDelete = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   return (
     <main className="app">
       <div className="todo-card">
@@ -36,7 +41,13 @@ function App() {
         <ul className="todo-list">
           {todos.map((todo) => (
             <li key={todo.id} className="todo-item">
-              {todo.text}
+              <span>{todo.text}</span>
+              <button
+                onClick={() => handleDelete(todo.id)}
+                className="delete-btn"
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>

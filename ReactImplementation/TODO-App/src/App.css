@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #081534;
+  background: #3bc5fc;
   color: white;
 }
 
@@ -17,8 +17,8 @@ body {
 }
 
 .todo-card {
-  width: 400px;
-  background: #b186fb;
+  width: 600px;
+  background: #83d7f3;
   padding: 24px;
   border-radius: 12px;
 }
