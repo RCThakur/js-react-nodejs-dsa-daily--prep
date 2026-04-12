@@ -31,7 +31,7 @@ npm run dev
 
 ### Add Todo
 
-A new todo object is created and added to the `todos` array. [web:73]
+A new todo object is created and added to the `todos` array.
 
 ```jsx
 const handleAddTodo = () => {
@@ -49,7 +49,7 @@ const handleAddTodo = () => {
 
 ### Delete Todo
 
-The selected todo is removed by filtering out the matching `id`. [web:73]
+The selected todo is removed by filtering out the matching `id`.
 
 ```jsx
 const handleDeleteTodo = (id) => {
@@ -60,7 +60,7 @@ const handleDeleteTodo = (id) => {
 
 ### Edit Todo
 
-The selected todo item is switched into edit mode, then updated using `map()`. [web:128][web:73]
+The selected todo item is switched into edit mode, then updated using `map()`.
 
 ```jsx
 const handleEditTodo = (todo) => {
