@@ -4,6 +4,8 @@ import "./App.css";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
+  const [editId, setEditId] = useState(null);
+  const [editValue, setEditValue] = useState("");
 
   const handleAddTodo = () => {
     if (inputValue.trim() === "") return;
@@ -17,19 +19,37 @@ function App() {
     setInputValue("");
   };
 
-  const handleDelete = (id) => {
+  const handleDeleteTodo = (id) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
+  };
+
+  const handleEditTodo = (todo) => {
+    setEditId(todo.id);
+    setEditValue(todo.text);
+  };
+
+  const handleSaveTodo = (id) => {
+    if (editValue.trim() === "") return;
+
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, text: editValue } : todo,
+    );
+
+    setTodos(updatedTodos);
+    setEditId(null);
+    setEditValue("");
   };
 
   return (
     <main className="app">
       <div className="todo-card">
         <h1>TODO List</h1>
+
         <div className="todo-form">
           <input
             type="text"
-            placeholder="Enter your task"
+            placeholder="Enter Your Task"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             className="todo-input"
@@ -38,16 +58,44 @@ function App() {
             Add Task
           </button>
         </div>
+
         <ul className="todo-list">
           {todos.map((todo) => (
             <li key={todo.id} className="todo-item">
-              <span>{todo.text}</span>
-              <button
-                onClick={() => handleDelete(todo.id)}
-                className="delete-btn"
-              >
-                Delete
-              </button>
+              {editId === todo.id ? (
+                <>
+                  <input
+                    type="text"
+                    value={editValue}
+                    onChange={(e) => setEditValue(e.target.value)}
+                    className="edit-input"
+                  />
+                  <button
+                    className="save-btn"
+                    onClick={() => handleSaveTodo(todo.id)}
+                  >
+                    Save
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span>{todo.text}</span>
+                  <div className="action-buttons">
+                    <button
+                      className="edit-btn"
+                      onClick={() => handleEditTodo(todo)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDeleteTodo(todo.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </>
+              )}
             </li>
           ))}
         </ul>

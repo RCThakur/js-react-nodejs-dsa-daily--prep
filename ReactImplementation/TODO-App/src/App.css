@@ -71,7 +71,37 @@ h1 {
   background: #ef4444;
   color: white;
   border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
   padding: 8px 10px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
 }
