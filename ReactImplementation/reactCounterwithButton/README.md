@@ -11,14 +11,11 @@ A simple React counter project with Increment, Decrement, and Reset buttons. Thi
 
 ## Project Structure
 
-```bash
+````bash
 src/
 ├── App.js
 ├── App.css
 └── main.jsx
-```
-
-## Step-by-step build
 
 ### 1. Create the component
 
@@ -30,7 +27,7 @@ import "./App.css";
 
 export default function App() {
   const [count, setCount] = useState(0);
-```
+````
 
 ### 2. Add the state
 
@@ -55,22 +52,6 @@ const handleReset = () => {
   setCount(0);
 };
 ```
-
-### 4. Build the UI
-
-Render the current count and connect each button to its click handler with `onClick`.
-
-### 5. Add styling
-
-Use `App.css` to style the app layout, counter box, and buttons.
-
-## How to run
-
-1. Create a React app with Vite or open your existing React project.
-2. Replace the content of `src/App.js` with the code above.
-3. Replace or create `src/App.css` with the CSS above.
-4. Run `npm install` if needed.
-5. Start the project with `npm run dev`.
 
 ## What you learn
 
