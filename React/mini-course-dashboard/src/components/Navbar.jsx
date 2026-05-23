@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  const [theme, toggleTheme] = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <nav>
