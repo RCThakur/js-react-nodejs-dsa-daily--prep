@@ -1,0 +1,38 @@
+const courses = [
+  {
+    id: 1,
+    title: "React",
+    category: "FrontEnd",
+    durationL: "4 weeks",
+    level: "Beginner",
+    price: 4000,
+    description: "Learn Basic of React from start.",
+  },
+  {
+    id: 2,
+    title: "Advanced React",
+    category: "Frontend",
+    durationL: "6 weeks",
+    level: "Intermediate",
+    price: 5000,
+    description: "Learn Deep level of React.",
+  },
+  {
+    id: 3,
+    title: "NodeJS",
+    category: "Backend",
+    durationL: "4 weeks",
+    level: "Intermediate",
+    price: 4500,
+    description: "Learn and Build backend with NodeJs.",
+  },
+  {
+    id: 4,
+    title: "MongoDB",
+    category: "Backend",
+    durationL: "4 weeks",
+    level: "Intermediate",
+    price: 5000,
+    description: "Learn and Build backend Database with MongoDB",
+  },
+];
