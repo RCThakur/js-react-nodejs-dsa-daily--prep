@@ -1,16 +1,4 @@
-// =======================================
-// MongoDB Aggregation Assignment
-// Name: Your Name
-// Database: ecomdb
-// =======================================
-
-// =======================================
-// STEP 1: CREATE DATABASE
-// =======================================
-
-// =======================================
-// STEP 2: DATASET SETUP
-// =======================================
+//DATABASE
 
 // Customers
 db.customers.insertMany([
@@ -305,6 +293,192 @@ db.orders.aggregate([
       totalQtySold: {
         $sum: "$qty",
       },
+    },
+  },
+]);
+
+//Problem 4
+
+db.orders.aggregate([
+  {
+    $group: {
+      _id: "$customerId",
+      orderCount: { $sum: 1 },
+    },
+  },
+  {
+    $sort: {
+      orderCount: -1,
+    },
+  },
+  {
+    $skip: 3,
+  },
+  {
+    $limit: 3,
+  },
+  {
+    $project: {
+      _id: 0,
+      customerId: "$_id",
+      orderCount: 1,
+    },
+  },
+]);
+
+//Problem 5
+
+db.reviews.aggregate([
+  {
+    $unwind: "$tags",
+  },
+  {
+    $group: {
+      _id: "$tags",
+      count: { $sum: 1 },
+    },
+  },
+  {
+    $sort: {
+      count: -1,
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      tag: "$_id",
+      count: 1,
+    },
+  },
+]);
+
+//Problem 6
+
+db.reviews.aggregate([
+  {
+    $match: {
+      rating: { $gte: 4 },
+    },
+  },
+  {
+    $unwind: "$tags",
+  },
+  {
+    $group: {
+      _id: "$tags",
+      count: { $sum: 1 },
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      tag: "$_id",
+      count: 1,
+    },
+  },
+]);
+
+//Problem 7
+
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customer",
+    },
+  },
+  {
+    $unwind: "$customer",
+  },
+  {
+    $project: {
+      _id: 0,
+      orderId: "$_id",
+      amount: 1,
+      status: 1,
+      customerName: "$customer.name",
+      city: "$customer.city",
+    },
+  },
+]);
+
+//Problem 8
+
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customer",
+    },
+  },
+  {
+    $unwind: "$customer",
+  },
+  {
+    $match: {
+      "customer.tier": "gold",
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      orderId: "$_id",
+      amount: 1,
+      customerName: "$customer.name",
+      tier: "$customer.tier",
+    },
+  },
+]);
+
+//Problem 9
+
+db.customers.aggregate([
+  {
+    $lookup: {
+      from: "orders",
+      localField: "_id",
+      foreignField: "customerId",
+      as: "orders",
+    },
+  },
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      city: 1,
+      orderAmounts: "$orders.amount",
+    },
+  },
+]);
+
+//Problem 10
+
+db.customers.aggregate([
+  {
+    $lookup: {
+      from: "orders",
+      localField: "_id",
+      foreignField: "customerId",
+      as: "orders",
+    },
+  },
+  {
+    $unwind: "$orders",
+  },
+  {
+    $group: {
+      _id: "$name",
+      orderCount: { $sum: 1 },
+      totalSpend: { $sum: "$orders.amount" },
+    },
+  },
+  {
+    $sort: {
+      totalSpend: -1,
     },
   },
 ]);
