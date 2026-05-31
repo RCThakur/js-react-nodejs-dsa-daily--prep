@@ -28,7 +28,7 @@ const register = async (req, res) => {
   });
 };
 
-//Login User
+//Login User controller
 const login = async (req, res) => {
   const { email, passowrd } = req.body;
 
